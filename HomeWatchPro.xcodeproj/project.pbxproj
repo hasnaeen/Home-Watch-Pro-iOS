@@ -83,6 +83,7 @@
 		CE9541C413D2F7590014E4D8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9541C313D2F7590014E4D8 /* MapKit.framework */; };
 		CE9541C913D2F82C0014E4D8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9541C713D2F82C0014E4D8 /* MapViewController.m */; };
 		CE9541CA13D2F82C0014E4D8 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9541C813D2F82C0014E4D8 /* MapViewController.xib */; };
+		CE971A00146A8EF200491129 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9719FF146A8EF100491129 /* libz.1.2.5.dylib */; };
 		CE98BEDD13C432DF004F640A /* InspectionItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE98BEDB13C432DF004F640A /* InspectionItemViewController.m */; };
 		CE98BEDE13C432DF004F640A /* InspectionItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE98BEDC13C432DF004F640A /* InspectionItemViewController.xib */; };
 		CE98BEE013C4349D004F640A /* btn_undo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE98BEDF13C4349D004F640A /* btn_undo.png */; };
@@ -144,7 +145,6 @@
 		CEC490C613B739B0008C8938 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC490C513B739B0008C8938 /* SystemConfiguration.framework */; };
 		CEC490C813B739F6008C8938 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC490C713B739F6008C8938 /* CFNetwork.framework */; };
 		CEC490CA13B73A24008C8938 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC490C913B73A24008C8938 /* MobileCoreServices.framework */; };
-		CEC490CC13B73A5F008C8938 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC490CB13B73A5F008C8938 /* libz.1.2.3.dylib */; };
 		CEC490FB13B75738008C8938 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC490F013B75738008C8938 /* NSObject+SBJSON.m */; };
 		CEC490FC13B75738008C8938 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC490F213B75738008C8938 /* NSString+SBJSON.m */; };
 		CEC490FD13B75738008C8938 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC490F413B75738008C8938 /* SBJSON.m */; };
@@ -274,6 +274,7 @@
 		CE9541C613D2F82C0014E4D8 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CE9541C713D2F82C0014E4D8 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		CE9541C813D2F82C0014E4D8 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		CE9719FF146A8EF100491129 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		CE98BEDA13C432DF004F640A /* InspectionItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectionItemViewController.h; sourceTree = "<group>"; };
 		CE98BEDB13C432DF004F640A /* InspectionItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectionItemViewController.m; sourceTree = "<group>"; };
 		CE98BEDC13C432DF004F640A /* InspectionItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectionItemViewController.xib; sourceTree = "<group>"; };
@@ -357,7 +358,6 @@
 		CEC490C513B739B0008C8938 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CEC490C713B739F6008C8938 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CEC490C913B73A24008C8938 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		CEC490CB13B73A5F008C8938 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		CEC490EE13B75738008C8938 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		CEC490EF13B75738008C8938 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		CEC490F013B75738008C8938 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -401,6 +401,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE971A00146A8EF200491129 /* libz.1.2.5.dylib in Frameworks */,
 				36F5627713B373C800565A06 /* UIKit.framework in Frameworks */,
 				36F5627913B373C800565A06 /* Foundation.framework in Frameworks */,
 				36F5627B13B373C800565A06 /* CoreGraphics.framework in Frameworks */,
@@ -408,7 +409,6 @@
 				CEC490C613B739B0008C8938 /* SystemConfiguration.framework in Frameworks */,
 				CEC490C813B739F6008C8938 /* CFNetwork.framework in Frameworks */,
 				CEC490CA13B73A24008C8938 /* MobileCoreServices.framework in Frameworks */,
-				CEC490CC13B73A5F008C8938 /* libz.1.2.3.dylib in Frameworks */,
 				CE938E0113CAC60C00794FA6 /* MediaPlayer.framework in Frameworks */,
 				CE9541C413D2F7590014E4D8 /* MapKit.framework in Frameworks */,
 			);
@@ -437,9 +437,9 @@
 		36F5627513B373C800565A06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE9719FF146A8EF100491129 /* libz.1.2.5.dylib */,
 				CE9541C313D2F7590014E4D8 /* MapKit.framework */,
 				CE938E0013CAC60C00794FA6 /* MediaPlayer.framework */,
-				CEC490CB13B73A5F008C8938 /* libz.1.2.3.dylib */,
 				CEC490C913B73A24008C8938 /* MobileCoreServices.framework */,
 				CEC490C713B739F6008C8938 /* CFNetwork.framework */,
 				CEC490C513B739B0008C8938 /* SystemConfiguration.framework */,

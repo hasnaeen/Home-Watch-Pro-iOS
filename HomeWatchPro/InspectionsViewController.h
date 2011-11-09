@@ -27,6 +27,7 @@
     BOOL hasInspection;
     NSInteger timerCount;
     InspectionSubmitManager *inspectionSubmitManager;
+    NSInteger todaysInspectionCount;
 }
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;

@@ -298,6 +298,32 @@ bool _isReloading = NO;
     switch (index) {
         case 0:
             inspectionArray = [dataManager GetAllInspectionByStatus:@"Assigned"];
+            NSDate *now = [NSDate date];
+            NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+            NSDateComponents *dateComponents = [gregorian components:NSDayCalendarUnit fromDate:now];
+            NSMutableArray *todaysInspection = [[NSMutableArray alloc] init];
+            NSMutableArray *tomorrowsInspection = [[NSMutableArray alloc] init];
+            
+            for (int i=0; i<[inspectionArray count]; i++) {
+                Inspections *item = [[Inspections alloc] init];
+                item = [inspectionArray objectAtIndex:i];
+                NSDateComponents *itemDateComponents = [gregorian components:NSDayCalendarUnit fromDate:[item DueDate]];
+                
+                if(item.DueDate <= now || ([dateComponents day] == [itemDateComponents day] && [dateComponents month] == [itemDateComponents month] && [dateComponents year] == [itemDateComponents year]))
+                {
+                    [todaysInspection addObject:item];
+                }
+                else
+                {
+                    [tomorrowsInspection addObject:item];
+                }
+            }
+            
+            todaysInspectionCount = [todaysInspection count];
+            
+            inspectionArray = todaysInspection;
+            [inspectionArray addObjectsFromArray:tomorrowsInspection];
+            
             [segmentControl setImage:[UIImage imageNamed:@"assigned_mo.png"] forSegmentAtIndex:0];
             currentStatus = @"Assigned";
             break;
@@ -337,6 +363,10 @@ bool _isReloading = NO;
     if([inspectionArray count]>0)
     {
         hasInspection = YES;
+        
+        if([currentStatus isEqualToString:@"Assigned"] == true)
+            return [inspectionArray count] + 2;
+        
         return [inspectionArray count];
     }
     else
@@ -355,9 +385,7 @@ bool _isReloading = NO;
 	static NSString *MyIdentifier = @"MyIdentifier";
 	MyIdentifier = @"tblCellView";
     
-    Inspections *item = [[Inspections alloc] init];
-    if(hasInspection == YES)
-    item = [inspectionArray objectAtIndex:indexPath.row];
+    
     
 	TableCellView *cell = (TableCellView *)[tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	if(cell == nil) {
@@ -377,7 +405,7 @@ bool _isReloading = NO;
     {
         [cell setBackGroundImage:@"top_curve.png"];
     }
-    else if(indexPath.row == [inspectionArray count] - 1)
+    else if((indexPath.row == [inspectionArray count] - 1 && [currentStatus isEqualToString:@"Assigned"] != true)||(indexPath.row == [inspectionArray count] + 2 - 1 && [currentStatus isEqualToString:@"Assigned"] == true))
     {
         [cell setBackGroundImage:@"bottom_curve.png"];
     }
@@ -388,12 +416,41 @@ bool _isReloading = NO;
     
     if(hasInspection == YES)
     {
+        Inspections *item = [[Inspections alloc] init];
+        BOOL isItem = TRUE;
+        /*
+        if(hasInspection == YES)
+            item = [inspectionArray objectAtIndex:indexPath.row];
+        */
+        if([currentStatus isEqualToString:@"Assigned"] == true)
+        {
+            if(indexPath.row == 0)
+            {
+                [cell setLabelText:@"Today's Assignments"];
+                isItem = false;
+            }
+            else if(todaysInspectionCount + 1 == indexPath.row)
+            {
+                [cell setLabelText:@"Tomorrow's Assignments"];
+                isItem = false;
+            }
+            else if(indexPath.row <= todaysInspectionCount)
+                item = [inspectionArray objectAtIndex:(indexPath.row - 1)];
+            else
+                item = [inspectionArray objectAtIndex:(indexPath.row - 2)];
+        }
+        else
+            item = [inspectionArray objectAtIndex:indexPath.row];
+        
+        if(isItem == TRUE)
+        {
         [cell setLabelText:[item Property]];
         
         if([item.IsQueued isEqualToNumber: [NSNumber numberWithBool:YES]]==TRUE)
             [cell setStatus:@"Queued"];
         else
             [cell setStatus:[item Status]];
+        }
     }
     else
     {
@@ -420,8 +477,25 @@ bool _isReloading = NO;
     if(hasInspection == YES)
     {
         Inspections *item = [[Inspections alloc] init];
+        BOOL isItem = TRUE;
+        
+        if([currentStatus isEqualToString:@"Assigned"] == true)
+        {
+            if(indexPath.row != 0 && todaysInspectionCount + 1 != indexPath.row)
+            {
+                if(indexPath.row <= todaysInspectionCount)
+                    item = [inspectionArray objectAtIndex:(indexPath.row - 1)];
+                else
+                    item = [inspectionArray objectAtIndex:(indexPath.row - 2)];        
+            }
+            else 
+                isItem = FALSE;
+        }
+        else
         item = [inspectionArray objectAtIndex:indexPath.row];
         
+        if(isItem == TRUE)
+        {
         InspectionItemViewController *childController = [[InspectionItemViewController alloc] init];
         childController.hidesBottomBarWhenPushed = YES;
         childController.currentInspectionID = [item InspectionID];
@@ -429,7 +503,8 @@ bool _isReloading = NO;
         [self.navigationController pushViewController:childController animated:YES];
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [InspectionItemViewController release];        
+        [InspectionItemViewController release]; 
+        }
     }
 }
 
